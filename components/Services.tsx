@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Code2, Sparkles, Megaphone, type LucideIcon } from "lucide-react";
+import Link from "next/link";
+import { Code2, Sparkles, Megaphone, ArrowUpRight, type LucideIcon } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { SERVICES, imageUrl, type Service } from "@/lib/content";
@@ -22,9 +23,19 @@ function Tag({ label }: { label: string }) {
 function ServiceCard({ service }: { service: Service }) {
   const Icon = ICONS[service.icon];
   return (
-    <article className="group flex h-full flex-col rounded-3xl border border-line bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/30 hover:shadow-card-hover">
-      <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-surface-muted text-brand transition-all duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:border-brand group-hover:bg-brand group-hover:text-white">
-        <Icon size={20} strokeWidth={1.75} />
+    <Link
+      href={`/services/${service.slug}`}
+      aria-label={`${service.title} — learn more`}
+      className="group flex h-full flex-col rounded-3xl border border-line bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/30 hover:shadow-card-hover"
+    >
+      <div className="flex items-start justify-between">
+        <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-surface-muted text-brand transition-all duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:border-brand group-hover:bg-brand group-hover:text-white">
+          <Icon size={20} strokeWidth={1.75} />
+        </div>
+        <ArrowUpRight
+          size={20}
+          className="text-body transition-all duration-300 group-hover:-translate-y-0.5 group-hover:text-brand"
+        />
       </div>
 
       <h3 className="mt-5 text-lg font-semibold text-heading">{service.title}</h3>
@@ -48,7 +59,7 @@ function ServiceCard({ service }: { service: Service }) {
           />
         </div>
       </div>
-    </article>
+    </Link>
   );
 }
 
