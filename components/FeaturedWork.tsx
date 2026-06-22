@@ -69,14 +69,24 @@ export function FeaturedWork() {
               Worked With:
             </span>
             <div className="marquee-mask relative w-full overflow-hidden">
-              <div className="flex w-max items-center gap-12 animate-marquee hover:[animation-play-state:paused]">
-                {[...PARTNERS, ...PARTNERS].map((name, i) => (
-                  <span
-                    key={`${name}-${i}`}
-                    className="whitespace-nowrap text-base font-semibold text-heading/40 transition-colors hover:text-heading/80"
+              <div className="flex w-max items-center animate-marquee hover:[animation-play-state:paused]">
+                {/* Track is two identical copies; the duplicate is hidden from
+                    screen readers so the partner list isn't announced twice. */}
+                {[0, 1].map((copy) => (
+                  <ul
+                    key={copy}
+                    aria-hidden={copy === 1}
+                    className="flex shrink-0 items-center gap-12 pr-12"
                   >
-                    {name}
-                  </span>
+                    {PARTNERS.map((name) => (
+                      <li
+                        key={name}
+                        className="whitespace-nowrap text-base font-semibold text-heading/40 transition-colors hover:text-heading/80"
+                      >
+                        {name}
+                      </li>
+                    ))}
+                  </ul>
                 ))}
               </div>
             </div>

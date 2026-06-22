@@ -84,7 +84,7 @@ export const SERVICES: Service[] = [
       {
         title: "Analytics & Tracking",
         description:
-          "Event tracking and dashboards so you always know what's converting and what isn't.",
+          "Event tracking and dashboards so you always know what’s converting and what isn’t.",
       },
     ],
     image: "photo-1498050108023-c5249f4df085",
@@ -368,12 +368,12 @@ export const FAQS: FaqItem[] = [
   {
     question: "How long does a typical project take?",
     answer:
-      "We're built for speed — our projects launch faster than the competition. Once we kick off, your website comes together quickly, and automations and social campaigns start delivering shortly after, depending on scope.",
+      "We’re built for speed — our projects launch faster than the competition. Once we kick off, your website comes together quickly, and automations and social campaigns start delivering shortly after, depending on scope.",
   },
   {
     question: "How much does a project cost?",
     answer:
-      "Pricing is tailored to your scope and goals. Websites are a single upfront investment, while automation and social work run on a flexible monthly plan. Book a call and we'll put together a precise, no-obligation quote.",
+      "Pricing is tailored to your scope and goals. Websites are a single upfront investment, while automation and social work run on a flexible monthly plan. Book a call and we’ll put together a precise, no-obligation quote.",
   },
   {
     question: "What exactly does AI automation include?",

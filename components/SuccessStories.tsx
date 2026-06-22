@@ -50,7 +50,7 @@ export function SuccessStories() {
               <div className="flex items-start justify-between gap-4">
                 <span className="text-5xl font-semibold tracking-tight">4.9/5</span>
                 <p className="max-w-[150px] text-sm text-white/70">
-                  We&apos;ve delivered 300+ projects that drive real results.
+                  We&rsquo;ve delivered 300+ projects that drive real results.
                 </p>
               </div>
 
@@ -61,7 +61,7 @@ export function SuccessStories() {
                 </div>
                 <p className="mt-4 text-lg font-semibold">Trusted by 100+ Businesses</p>
                 <p className="mt-1 text-sm text-white/60">
-                  They hit their targets — You&apos;re next.
+                  They hit their targets — You&rsquo;re next.
                 </p>
                 <Button variant="outline" size="lg" className="mt-5 w-full">
                   Leave a review

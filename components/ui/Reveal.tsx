@@ -52,7 +52,7 @@ export function Reveal({
         transform: shown ? undefined : `translateY(${y}px)`,
       }}
       className={cn(
-        "transition-all duration-700 ease-out will-change-transform motion-reduce:transition-none",
+        "reveal transition-[opacity,transform] duration-700 ease-out will-change-transform motion-reduce:transition-none",
         shown ? "opacity-100" : "opacity-0",
         className
       )}

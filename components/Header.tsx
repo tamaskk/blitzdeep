@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ChevronDown, Code2, Sparkles, Megaphone, type LucideIcon } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
+import { MobileMenu } from "@/components/MobileMenu";
 import { NAV_LINKS, SERVICES, type Service } from "@/lib/content";
 
 const SERVICE_ICONS: Record<Service["icon"], LucideIcon> = {
@@ -14,18 +15,21 @@ const SERVICE_ICONS: Record<Service["icon"], LucideIcon> = {
  * "What We Do" nav item: the label is a normal link that scrolls to the
  * services section, while hovering (or keyboard-focusing) reveals a dropdown
  * of the individual services, each linking to its own page. CSS-only — the
- * `pt-3` on the panel bridges the gap so the menu stays open on hover.
+ * `pt-4` on the panel bridges the gap so the menu stays open on hover, and
+ * `group-focus-within` keeps it reachable by keyboard.
  */
 function WhatWeDoDropdown() {
   return (
     <li className="group relative">
       <Link
         href="/#services"
+        aria-haspopup="true"
         className="flex items-center gap-1 text-sm font-medium text-heading/80 transition-colors hover:text-heading"
       >
         What We Do
         <ChevronDown
           size={15}
+          aria-hidden
           className="transition-transform duration-200 group-hover:rotate-180"
         />
       </Link>
@@ -41,7 +45,7 @@ function WhatWeDoDropdown() {
                 className="group/item flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-surface-muted"
               >
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line bg-brand-50 text-brand transition-colors group-hover/item:bg-brand group-hover/item:text-white">
-                  <Icon size={17} strokeWidth={1.75} />
+                  <Icon size={17} strokeWidth={1.75} aria-hidden />
                 </span>
                 <span className="min-w-0">
                   <span className="block text-sm font-semibold text-heading">{service.title}</span>
@@ -85,9 +89,12 @@ export function Header() {
           ))}
         </ul>
 
-        <Button href="/#contact" size="md">
-          Get a Proposal
-        </Button>
+        <div className="flex items-center gap-2.5">
+          <Button href="/#contact" size="md" className="hidden sm:inline-flex">
+            Get a Proposal
+          </Button>
+          <MobileMenu />
+        </div>
       </nav>
     </header>
   );

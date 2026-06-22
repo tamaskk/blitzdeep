@@ -60,7 +60,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
   return (
     <>
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         {/* Hero */}
         <section className="hero-gradient relative overflow-hidden">
           <div className="container-page grid items-center gap-12 pb-16 pt-32 sm:pt-36 lg:grid-cols-2 lg:gap-16 lg:pb-24 lg:pt-40">
@@ -121,12 +121,12 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <section className="py-20 lg:py-28">
           <div className="container-page">
             <Reveal className="max-w-2xl">
-              <span className="eyebrow">What&apos;s Included</span>
+              <span className="eyebrow">What&rsquo;s Included</span>
               <h2 className="mt-4 font-semibold text-heading text-display-sm">
                 Everything you need to win
               </h2>
               <p className="mt-4 text-[15px] leading-relaxed text-body">
-                {service.tagline} Here&apos;s exactly what we deliver.
+                {service.tagline} Here&rsquo;s exactly what we deliver.
               </p>
             </Reveal>
 

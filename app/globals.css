@@ -9,11 +9,24 @@
   }
 
   html {
+    color-scheme: light;
     scroll-behavior: smooth;
   }
 
   body {
     @apply bg-surface-subtle text-body font-sans antialiased;
+  }
+
+  /* Balance headings and avoid orphans/widows in body copy */
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   /* Respect users who prefer reduced motion: disable all animation/transition */

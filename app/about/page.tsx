@@ -39,7 +39,7 @@ function AboutHero() {
           <span className="font-serif italic font-normal">300+ Brands</span>
         </h1>
         <p className="mt-6 max-w-xl animate-fade-up text-base text-body [animation-delay:280ms]">
-          We&apos;re a small, senior team obsessed with one thing: turning websites, AI automation
+          We&rsquo;re a small, senior team obsessed with one thing: turning websites, AI automation
           and social campaigns into measurable business growth.
         </p>
         <div className="mt-8 animate-fade-up [animation-delay:400ms]">
@@ -214,7 +214,7 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <AboutHero />
         <AboutImage />
         <Story />

@@ -67,7 +67,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#F1592A",
+  // Matches the page background (surface.subtle) so the mobile browser chrome blends in
+  themeColor: "#FAF9F7",
   width: "device-width",
   initialScale: 1,
 };
@@ -75,7 +76,23 @@ export const viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${serif.variable}`}>
+      <head>
+        {/* Warm up the image CDN connection before hero/section images request */}
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        {/* Without JS the IntersectionObserver never fires, so reveal-wrapped
+            content would stay invisible — force it visible as a fallback. */}
+        <noscript>
+          <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
+      </head>
       <body>
+        <a
+          href="#main-content"
+          className="sr-only rounded-lg bg-ink px-4 py-2 text-sm font-medium text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+        >
+          Skip to content
+        </a>
         {children}
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />

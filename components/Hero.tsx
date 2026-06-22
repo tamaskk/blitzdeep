@@ -42,7 +42,7 @@ export function Hero() {
         {/* CTAs */}
         <div className="mt-8 flex animate-fade-up flex-col items-center gap-3 [animation-delay:420ms] sm:flex-row">
           <Button href="#contact" variant="primary" size="lg">
-            Let&apos;s Talk Strategy
+            Let&rsquo;s Talk Strategy
           </Button>
           <Button href="#work" variant="outline" size="lg">
             See Our Work
