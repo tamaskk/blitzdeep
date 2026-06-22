@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: "Inter", system-ui, sans-serif;
+    --font-serif: "Instrument Serif", Georgia, serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface-subtle text-body font-sans antialiased;
+  }
+
+  /* Respect users who prefer reduced motion: disable all animation/transition */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Centered page gutter shared by every section */
+  .container-page {
+    @apply mx-auto w-full max-w-container px-5 sm:px-6 lg:px-8;
+  }
+
+  /* Small section eyebrow label ("● Services") */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-sm font-medium text-heading;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-2 w-2 rounded-[3px] bg-brand;
+  }
+}
+
+@layer utilities {
+  /* Soft mesh gradient behind the hero (blue → cream → orange) */
+  .hero-gradient {
+    background-color: #fbf6f0;
+    background-image:
+      radial-gradient(60% 80% at 8% 0%, rgba(125, 185, 232, 0.55) 0%, rgba(125, 185, 232, 0) 55%),
+      radial-gradient(55% 70% at 95% 18%, rgba(241, 89, 42, 0.55) 0%, rgba(241, 89, 42, 0) 55%),
+      radial-gradient(70% 60% at 50% 12%, rgba(255, 214, 170, 0.65) 0%, rgba(255, 214, 170, 0) 60%),
+      linear-gradient(180deg, rgba(251, 246, 240, 0) 55%, #faf9f7 100%);
+  }
+
+  /* Hide scrollbars on horizontal logo / chip rows */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Fade the left/right edges of the infinite partner marquee */
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 12%,
+      #000 88%,
+      transparent
+    );
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+}
