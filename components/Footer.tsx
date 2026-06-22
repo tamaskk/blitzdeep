@@ -12,29 +12,12 @@ export function Footer() {
     <footer className="bg-ink text-white">
       <div className="container-page py-16">
         <Reveal className="grid gap-12 lg:grid-cols-[1.7fr_1fr_1fr_1.4fr]">
-          {/* Brand + newsletter */}
+          {/* Brand */}
           <div className="max-w-xs">
             <Logo tone="light" />
             <p className="mt-4 text-sm leading-relaxed text-white/55">
               Strategy. Design. Performance. Unified for measurable ROI.
             </p>
-
-            <p className="mt-8 text-sm font-semibold">Newsletter</p>
-            <p className="mt-1 text-xs text-white/50">Sign up for our newsletter below</p>
-            <form className="mt-3 flex gap-2">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                aria-label="Email address"
-                className="h-10 w-full rounded-lg border border-white/10 bg-ink-800 px-3 text-sm text-white placeholder:text-white/35 focus:border-brand focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="h-10 shrink-0 rounded-lg bg-brand px-4 text-sm font-medium text-white transition-colors hover:bg-brand-hover"
-              >
-                Subscribe
-              </button>
-            </form>
           </div>
 
           {/* Link columns */}
@@ -61,7 +44,7 @@ export function Footer() {
             <h3 className="text-sm font-semibold">Contact Us</h3>
             <ul className="mt-4 space-y-3 text-sm text-white/55">
               <li className="flex items-center gap-2">
-                <Mail size={15} className="text-brand" /> Contact@example.com
+                <Mail size={15} className="text-brand" /> info@blitzdeep.com
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={15} className="text-brand" /> 332-278-8976

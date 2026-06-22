@@ -15,9 +15,11 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { HowItWorks } from "@/components/HowItWorks";
 import { CtaBand } from "@/components/CtaBand";
+import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SERVICES, getService, imageUrl, type Service } from "@/lib/content";
+import { serviceSchema, breadcrumbSchema } from "@/lib/site";
 
 const ICONS: Record<Service["icon"], LucideIcon> = {
   web: Code2,
@@ -32,10 +34,19 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const service = getService(params.slug);
-  if (!service) return { title: "Service — BlitzDeep" };
+  if (!service) return { title: "Service" };
+  const path = `/services/${service.slug}`;
   return {
-    title: `${service.title} — BlitzDeep`,
-    description: service.tagline,
+    title: service.title,
+    description: service.overview,
+    keywords: [service.title, ...service.tags, "BlitzDeep"],
+    alternates: { canonical: path },
+    openGraph: {
+      type: "website",
+      title: `${service.title} — BlitzDeep`,
+      description: service.tagline,
+      url: path,
+    },
   };
 }
 
@@ -186,6 +197,16 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         />
       </main>
       <Footer />
+
+      {/* Structured data: Service + breadcrumb trail */}
+      <JsonLd data={serviceSchema(service)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/#services" },
+          { name: service.title, path: `/services/${service.slug}` },
+        ])}
+      />
     </>
   );
 }

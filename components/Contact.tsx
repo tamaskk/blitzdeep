@@ -66,7 +66,7 @@ export function Contact() {
           </p>
 
           <div className="mt-auto flex flex-col gap-4 pt-10 sm:flex-row">
-            <ContactCard icon={Mail} label="Mail" value="sales@example.com" />
+            <ContactCard icon={Mail} label="Mail" value="info@blitzdeep.com" />
             <ContactCard icon={Phone} label="Phone" value="+332-278-8976" />
           </div>
         </Reveal>

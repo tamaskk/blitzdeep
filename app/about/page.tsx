@@ -9,9 +9,16 @@ import { Reveal } from "@/components/ui/Reveal";
 import { VALUES, FOUNDER, STATS, imageUrl, type Value } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "About Us — BlitzDeep",
+  title: "About Us",
   description:
-    "BlitzDeep is the growth partner behind 300+ brands. Meet the team building websites, AI automation and social campaigns that drive measurable ROI.",
+    "BlitzDeep is the growth partner behind 300+ brands. Meet founder Tamas Krisztian Kalman and the values behind our websites, AI automation and social media work.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About BlitzDeep",
+    description:
+      "The growth partner behind 300+ brands — websites, AI automation and social media marketing that drive measurable ROI.",
+    url: "/about",
+  },
 };
 
 const VALUE_ICONS: Record<Value["icon"], LucideIcon> = {
