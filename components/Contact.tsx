@@ -1,9 +1,12 @@
-import { Mail, Phone } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { Mail, Phone, Loader2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 
 const fieldBase =
-  "w-full rounded-xl border border-white/10 bg-ink-800 px-4 text-sm text-white placeholder:text-white/50 focus:outline-none focus-visible:border-brand focus-visible:ring-1 focus-visible:ring-brand";
+  "w-full rounded-xl border border-white/10 bg-ink-800 px-4 text-sm text-white placeholder:text-white/50 focus:outline-none focus-visible:border-brand focus-visible:ring-1 focus-visible:ring-brand disabled:opacity-60";
 
 function Field({
   id,
@@ -15,6 +18,7 @@ function Field({
   inputMode,
   spellCheck,
   autoCapitalize,
+  disabled,
 }: {
   id: string;
   label: string;
@@ -25,6 +29,7 @@ function Field({
   inputMode?: React.InputHTMLAttributes<HTMLInputElement>["inputMode"];
   spellCheck?: boolean;
   autoCapitalize?: string;
+  disabled?: boolean;
 }) {
   return (
     <div className="flex flex-col gap-1.5">
@@ -46,6 +51,7 @@ function Field({
         inputMode={inputMode}
         spellCheck={spellCheck}
         autoCapitalize={autoCapitalize}
+        disabled={disabled}
         className={`${fieldBase} h-11`}
       />
     </div>
@@ -81,7 +87,42 @@ function ContactCard({
   );
 }
 
+type Status = "idle" | "submitting" | "success" | "error";
+
 export function Contact() {
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    setStatus("submitting");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const { error } = await res.json().catch(() => ({ error: "" }));
+        throw new Error(error || "Could not send your message. Please try again.");
+      }
+
+      form.reset();
+      setStatus("success");
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    }
+  }
+
+  const submitting = status === "submitting";
+
   return (
     <section id="contact" className="py-20 lg:py-28">
       <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-16">
@@ -112,7 +153,11 @@ export function Contact() {
 
         {/* Right: dark form */}
         <Reveal delay={120}>
-          <form className="rounded-3xl bg-ink p-6 sm:p-8 transition-shadow duration-300 hover:shadow-card-hover">
+          <form
+            onSubmit={handleSubmit}
+            aria-busy={submitting}
+            className="rounded-3xl bg-ink p-6 sm:p-8 transition-shadow duration-300 hover:shadow-card-hover"
+          >
             <div className="grid gap-5 sm:grid-cols-2">
               <Field
                 id="firstName"
@@ -120,6 +165,7 @@ export function Contact() {
                 placeholder="Jane…"
                 required
                 autoComplete="given-name"
+                disabled={submitting}
               />
               <Field
                 id="lastName"
@@ -127,6 +173,7 @@ export function Contact() {
                 placeholder="Cooper…"
                 required
                 autoComplete="family-name"
+                disabled={submitting}
               />
             </div>
             <div className="mt-5 grid gap-5">
@@ -140,16 +187,21 @@ export function Contact() {
                 inputMode="email"
                 spellCheck={false}
                 autoCapitalize="none"
+                disabled={submitting}
               />
+              {/* type="text" (not "url") so an optional entry like
+                  "yourcompany.com" without https:// doesn't block submission;
+                  inputMode keeps the URL-optimized keyboard on mobile. */}
               <Field
                 id="website"
                 label="Website"
-                type="url"
+                type="text"
                 placeholder="yourcompany.com…"
                 autoComplete="url"
                 inputMode="url"
                 spellCheck={false}
                 autoCapitalize="none"
+                disabled={submitting}
               />
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="message" className="text-xs font-medium text-white/80">
@@ -164,16 +216,37 @@ export function Contact() {
                   rows={4}
                   placeholder="Tell us about your project…"
                   required
+                  disabled={submitting}
                   className={`${fieldBase} resize-none py-3`}
                 />
               </div>
             </div>
+
             <button
               type="submit"
-              className="mt-6 h-12 w-full rounded-xl bg-brand text-sm font-semibold text-white shadow-btn transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-hover active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+              disabled={submitting}
+              className="mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand text-sm font-semibold text-white shadow-btn transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-hover active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             >
-              Send Message
+              {submitting && <Loader2 size={16} className="animate-spin" aria-hidden />}
+              {submitting ? "Sending…" : "Send Message"}
             </button>
+
+            {/* Async status — announced to screen readers */}
+            <p
+              role="status"
+              aria-live="polite"
+              className={`mt-3 min-h-[1.25rem] text-sm ${
+                status === "success"
+                  ? "text-emerald-400"
+                  : status === "error"
+                    ? "text-red-400"
+                    : "sr-only"
+              }`}
+            >
+              {status === "success" &&
+                "Thanks — your message is on its way. We’ll be in touch shortly."}
+              {status === "error" && errorMsg}
+            </p>
           </form>
         </Reveal>
       </div>
