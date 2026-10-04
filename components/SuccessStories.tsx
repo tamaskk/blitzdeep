@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Button } from "@/components/ui/Button";
 import { Stars } from "@/components/ui/Stars";
 import { AvatarStack } from "@/components/ui/AvatarStack";
 import { Reveal } from "@/components/ui/Reveal";
@@ -63,9 +62,6 @@ export function SuccessStories() {
                 <p className="mt-1 text-sm text-white/60">
                   They hit their targets — You&rsquo;re next.
                 </p>
-                <Button variant="outline" size="lg" className="mt-5 w-full">
-                  Leave a review
-                </Button>
               </div>
             </div>
           </Reveal>
