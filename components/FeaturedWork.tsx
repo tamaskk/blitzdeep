@@ -32,7 +32,7 @@ function WorkCard({ work }: { work: Work }) {
             : "translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
         )}
       >
-        <div className="rounded-2xl bg-white/95 px-4 py-3 shadow-sm backdrop-blur">
+        <div className="rounded-2xl bg-card/95 px-4 py-3 shadow-sm backdrop-blur">
           <p className="text-sm font-semibold text-heading">{work.title}</p>
           <p className="text-xs text-body">{work.subtitle}</p>
         </div>

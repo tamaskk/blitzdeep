@@ -6,6 +6,37 @@
   :root {
     --font-inter: "Inter", system-ui, sans-serif;
     --font-serif: "Instrument Serif", Georgia, serif;
+
+    /* Neutral palette as RGB triplets (see tailwind.config.ts) */
+    --c-heading: 26 23 20;
+    --c-body: 107 102 97;
+    --c-line: 233 230 225;
+    --c-surface: 255 255 255;
+    --c-surface-muted: 247 246 244;
+    --c-surface-subtle: 250 249 247;
+    --c-card: 255 255 255;
+    --c-brand-50: 255 243 236;
+    --c-brand-100: 255 227 213;
+    --c-ink: 23 21 19;
+    --c-ink-800: 33 30 27;
+    --c-ink-700: 44 40 37;
+  }
+
+  /* Dark theme (home page): everything inside re-resolves the tokens above. */
+  .theme-dark {
+    color-scheme: dark;
+    --c-heading: 255 255 255;
+    --c-body: 156 166 178;
+    --c-line: 34 44 56;
+    --c-surface: 10 15 20;
+    --c-surface-muted: 13 19 26;
+    --c-surface-subtle: 10 15 20;
+    --c-card: 16 23 31;
+    --c-brand-50: 44 24 16;
+    --c-brand-100: 62 31 19;
+    --c-ink: 16 23 31;
+    --c-ink-800: 22 31 42;
+    --c-ink-700: 30 41 54;
   }
 
   html {
@@ -56,6 +87,100 @@
     content: "";
     @apply h-2 w-2 rounded-[3px] bg-brand;
   }
+}
+
+/* AI Automation hero (components/ai-hero). The section's `data-state` says who
+   paints the visuals: WebGL ("gl") or plain DOM ("fallback"). */
+@layer components {
+  .ai-hero {
+    background: linear-gradient(180deg, #0b6bff 0%, #2f86ff 60%, #cfe3ff 100%);
+  }
+
+  /* CSS orb: placeholder that WebGL measures, and the no-WebGL fallback. */
+  .ai-orb {
+    border-radius: 9999px;
+    /* Soft glow behind the orb; --orb-glow scales it for smaller orbs. */
+    box-shadow: 0 0 var(--orb-glow, 110px) calc(var(--orb-glow, 110px) / 3) rgba(190, 225, 255, 0.6);
+    background:
+      radial-gradient(42% 34% at 34% 22%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 70%),
+      radial-gradient(60% 60% at 62% 68%, #f79a80 0%, rgba(247, 154, 128, 0) 60%),
+      radial-gradient(circle at 40% 35%, #ee5a43 0%, #c2261c 62%, #8e1a14 100%);
+  }
+  .ai-hero[data-state="pending"] [data-gl],
+  .ai-hero[data-state="pending"] .ai-orb {
+    opacity: 0;
+  }
+
+  /* WebGL draws these; keep them in the DOM for a11y, focus and clicks. */
+  .ai-hero[data-state="gl"] .ai-orb {
+    visibility: hidden;
+  }
+  .ai-hero[data-state="gl"] [data-gl] {
+    -webkit-text-fill-color: transparent;
+  }
+  .ai-hero[data-state="gl"] [data-gl-bg] {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .ai-hero[data-state="fallback"] .ai-orb {
+    animation: scale-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .ai-hero[data-state="fallback"] [data-gl] {
+    animation: fade-up 0.7s cubic-bezier(0.21, 0.6, 0.35, 1) both;
+  }
+  .ai-hero[data-state="fallback"] [data-gl-group="1"] {
+    animation-delay: 100ms;
+  }
+  .ai-hero[data-state="fallback"] [data-gl-group="2"] {
+    animation-delay: 200ms;
+  }
+  .ai-hero[data-state="fallback"] [data-gl-group="3"] {
+    animation-delay: 300ms;
+  }
+}
+
+/* Website Development page (components/web-page): printed-halftone look. */
+@layer components {
+  /* Orange dot screen, multiplied over whatever is beneath. */
+  .web-halftone {
+    background-image: radial-gradient(circle, rgba(230, 70, 20, 0.55) 1.1px, transparent 1.4px);
+    background-size: 7px 7px;
+    mix-blend-mode: multiply;
+  }
+
+  /* One letter of the hero's giant word: white → peach fill with the dot
+     screen on top, both clipped to the glyph so it looks printed. */
+  .web-letter {
+    display: inline-block;
+    background-image:
+      radial-gradient(circle, rgba(230, 70, 20, 0.4) 1.1px, transparent 1.4px),
+      linear-gradient(180deg, #ffffff 0%, #ffd7b5 100%);
+    background-size:
+      7px 7px,
+      100% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: web-letter-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+@keyframes web-letter-up {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+/* Social Media Marketing page: no scrollbar, for a cinematic look. */
+html:has(.social-page) {
+  scrollbar-width: none;
+}
+html:has(.social-page)::-webkit-scrollbar {
+  display: none;
 }
 
 @layer utilities {

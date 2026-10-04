@@ -25,8 +25,9 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
-      <Header />
+    // Dark theme: the hero sets the tone and every section below follows it.
+    <div className="theme-dark bg-surface-subtle text-body">
+      <Header tone="light" />
       <main id="main-content" tabIndex={-1}>
         <Hero />
         <Services />
@@ -41,6 +42,6 @@ export default function Home() {
       <Footer />
       {/* Rich-result structured data for the on-page FAQ */}
       <JsonLd data={faqSchema(FAQS)} />
-    </>
+    </div>
   );
 }

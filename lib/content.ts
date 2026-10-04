@@ -51,6 +51,11 @@ export type Service = {
   overview: string; // longer intro paragraph
   tags: string[];
   features: ServiceFeature[];
+  idealFor: string[]; // who the service is the right fit for
+  deliverables: string[]; // concrete things the client walks away with
+  pricing: string; // engagement model (no figures — quotes are per scope)
+  process: Step[]; // service-specific version of the 4-step process
+  faqs: FaqItem[];
   image: string;
 };
 
@@ -87,6 +92,86 @@ export const SERVICES: Service[] = [
           "Event tracking and dashboards so you always know what’s converting and what isn’t.",
       },
     ],
+    idealFor: [
+      "B2B brands whose current site looks dated or doesn’t convert",
+      "Companies launching a new product, brand or market",
+      "Teams that want to update content without waiting on a developer",
+    ],
+    deliverables: [
+      "Sitemap and page-by-page conversion strategy",
+      "Wireframes and custom UI/UX design",
+      "Responsive build on Next.js or Webflow",
+      "Headless CMS setup so your team can edit content",
+      "Technical SEO: metadata, sitemap and structured data",
+      "Core Web Vitals and performance optimization",
+      "Analytics, event tracking and dashboards",
+      "Contact forms and lead capture wired to your tools",
+      "Launch plus post-launch support",
+    ],
+    pricing:
+      "A single upfront investment, quoted to your scope and goals. Most clients then stay on a monthly plan for maintenance, optimization and new features.",
+    process: [
+      {
+        step: "01",
+        icon: "discovery",
+        title: "Discovery & Strategy",
+        description:
+          "We dig into your goals, audience and funnel, then map the sitemap and the action every page should drive.",
+      },
+      {
+        step: "02",
+        icon: "build",
+        title: "Design & Development",
+        description:
+          "Wireframes become a custom design, then a fast, responsive build — with weekly check-ins along the way.",
+      },
+      {
+        step: "03",
+        icon: "launch",
+        title: "Launch & Integration",
+        description:
+          "We ship, connect your CMS, forms and analytics, and make sure everything runs smoothly from day one.",
+      },
+      {
+        step: "04",
+        icon: "optimize",
+        title: "Optimize & Scale",
+        description:
+          "We watch what converts, test improvements and keep refining the site as your business grows.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Which platform will my website be built on?",
+        answer:
+          "We build on Next.js or Webflow, paired with a headless CMS. We recommend the right fit during discovery based on your goals, content needs and how your team works.",
+      },
+      {
+        question: "Will I be able to edit the site myself?",
+        answer:
+          "Yes. Every site ships with a CMS set up for your content, so your team can update pages and publish without touching code.",
+      },
+      {
+        question: "Is SEO included?",
+        answer:
+          "Technical SEO is built in from day one — clean semantic markup, metadata, sitemap, structured data and Core Web Vitals.",
+      },
+      {
+        question: "How long does a website take?",
+        answer:
+          "We’re built for speed. Once we kick off, your site comes together quickly; the exact timeline depends on scope and is agreed before we start.",
+      },
+      {
+        question: "How much does a website cost?",
+        answer:
+          "A website is a single upfront investment tailored to your scope and goals. Book a call and we’ll put together a precise, no-obligation quote.",
+      },
+      {
+        question: "What happens after launch?",
+        answer:
+          "Every project includes post-launch support, and most clients stay on a monthly plan for maintenance, optimization and new features.",
+      },
+    ],
     image: "photo-1498050108023-c5249f4df085",
   },
   {
@@ -121,6 +206,84 @@ export const SERVICES: Service[] = [
           "Automated reports and alerts so the right insights reach the right people on time.",
       },
     ],
+    idealFor: [
+      "Teams losing hours every week to repetitive manual work",
+      "Businesses whose tools don’t talk to each other",
+      "Companies that want faster lead response and support without adding headcount",
+    ],
+    deliverables: [
+      "Workflow audit with a prioritized automation roadmap",
+      "Custom AI agents for content, lead qualification and Q&A",
+      "Automated lead routing and follow-up",
+      "Customer support chatbots",
+      "CRM, email, Slack and spreadsheet integrations",
+      "Automated reports and alerts",
+      "Ongoing monitoring, maintenance and improvements",
+    ],
+    pricing:
+      "A flexible monthly plan tailored to your scope and goals. Book a call and we’ll put together a precise, no-obligation quote.",
+    process: [
+      {
+        step: "01",
+        icon: "discovery",
+        title: "Workflow Audit",
+        description:
+          "We map how work actually moves through your team and pinpoint where automation saves the most time.",
+      },
+      {
+        step: "02",
+        icon: "build",
+        title: "Design & Build",
+        description:
+          "We build the agents and automations for the highest-impact workflows first, with weekly check-ins.",
+      },
+      {
+        step: "03",
+        icon: "launch",
+        title: "Launch & Integration",
+        description:
+          "We connect everything to your existing stack and make sure it runs smoothly from day one — no loose ends.",
+      },
+      {
+        step: "04",
+        icon: "optimize",
+        title: "Optimize & Scale",
+        description:
+          "We measure the time saved, refine what’s live and extend automation to the next workflow.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What exactly does AI automation include?",
+        answer:
+          "We audit your workflows, then connect your tools and add AI where it saves the most time — lead routing, content generation, customer support and automated reporting.",
+      },
+      {
+        question: "Which tools can you connect?",
+        answer:
+          "We work with the stack you already use — your CRM, email, Slack and spreadsheets — and connect them into one automated flow.",
+      },
+      {
+        question: "Where do we start?",
+        answer:
+          "With a workflow audit. We map your processes, rank the opportunities by time saved and begin with the ones that pay back fastest.",
+      },
+      {
+        question: "Will AI replace my team?",
+        answer:
+          "No. The goal is to take the busywork off their plate so they can focus on the work that actually moves the needle.",
+      },
+      {
+        question: "How is AI automation priced?",
+        answer:
+          "Automation runs on a flexible monthly plan tailored to your scope. Book a call and we’ll put together a precise, no-obligation quote.",
+      },
+      {
+        question: "Do you maintain the automations after launch?",
+        answer:
+          "Yes. Every engagement includes post-launch support, and the monthly plan covers maintenance, optimization and new workflows.",
+      },
+    ],
     image: "photo-1518770660439-4636190af475",
   },
   {
@@ -153,6 +316,84 @@ export const SERVICES: Service[] = [
         title: "Reporting & Analytics",
         description:
           "Transparent monthly dashboards tracking reach, leads, CAC and ROAS — no vanity metrics.",
+      },
+    ],
+    idealFor: [
+      "B2B brands that post regularly but see no pipeline from it",
+      "Companies ready to add paid social to their growth mix",
+      "Teams without the time to plan, create and report in-house",
+    ],
+    deliverables: [
+      "Channel and content strategy tied to your goals",
+      "Monthly content plan in your brand voice",
+      "Content creation for the platforms that matter to your buyers",
+      "Paid campaigns on LinkedIn, Meta and more",
+      "Daily community management",
+      "Ongoing campaign optimization for qualified leads",
+      "Monthly dashboard: reach, leads, CAC and ROAS",
+    ],
+    pricing:
+      "A flexible monthly plan tailored to your scope and goals. Book a call and we’ll put together a precise, no-obligation quote.",
+    process: [
+      {
+        step: "01",
+        icon: "discovery",
+        title: "Discovery & Strategy",
+        description:
+          "We study your buyers, channels and competitors, then set the KPIs every campaign will be measured against.",
+      },
+      {
+        step: "02",
+        icon: "build",
+        title: "Plan & Create",
+        description:
+          "We build the monthly content plan and campaign creative in your voice, with weekly check-ins.",
+      },
+      {
+        step: "03",
+        icon: "launch",
+        title: "Publish & Promote",
+        description:
+          "Content goes live, paid campaigns launch and we engage your audience every day.",
+      },
+      {
+        step: "04",
+        icon: "optimize",
+        title: "Optimize & Scale",
+        description:
+          "We report transparently every month, test relentlessly and scale what brings in qualified leads.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Which platforms do you work on?",
+        answer:
+          "The ones your buyers actually use. For most clients that means LinkedIn and Meta, and we add other channels where they make sense.",
+      },
+      {
+        question: "Do you create the content too?",
+        answer:
+          "Yes. We handle strategy, content, paid ads and reporting, so you don’t need a separate creative team.",
+      },
+      {
+        question: "How do you measure social media results?",
+        answer:
+          "We define KPIs up front (reach, qualified leads, CAC, ROAS) and report on them transparently every month with a live dashboard you can access anytime.",
+      },
+      {
+        question: "Do you run paid ads or only organic?",
+        answer:
+          "Both. Organic content builds your audience, while targeted paid campaigns are optimized for qualified leads.",
+      },
+      {
+        question: "How is social media marketing priced?",
+        answer:
+          "Social work runs on a flexible monthly plan tailored to your scope. Book a call and we’ll put together a precise, no-obligation quote.",
+      },
+      {
+        question: "How soon will we see results?",
+        answer:
+          "Campaigns start delivering shortly after kickoff, depending on scope. Growth then compounds as we test and refine month over month.",
       },
     ],
     image: "photo-1432888622747-4eb9a8efeb07",

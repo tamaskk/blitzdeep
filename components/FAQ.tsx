@@ -10,7 +10,7 @@ function FaqRow({ item, defaultOpen }: { item: FaqItem; defaultOpen?: boolean })
   return (
     <details
       open={defaultOpen}
-      className="group rounded-2xl border border-line bg-white px-5 py-4 transition-colors duration-300 hover:border-brand/40 open:border-brand/30"
+      className="group rounded-2xl border border-line bg-card px-5 py-4 transition-colors duration-300 hover:border-brand/40 open:border-brand/30"
     >
       <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[15px] font-medium text-heading transition-colors marker:hidden group-hover:text-brand">
         {item.question}
@@ -24,7 +24,13 @@ function FaqRow({ item, defaultOpen }: { item: FaqItem; defaultOpen?: boolean })
   );
 }
 
-export function FAQ() {
+export function FAQ({
+  items = FAQS,
+  description = "Discover how our design subscription helps innovative brands grow smarter and faster.",
+}: {
+  items?: FaqItem[];
+  description?: string;
+}) {
   return (
     <section id="faq" className="py-20 lg:py-28">
       <div className="container-page grid gap-10 lg:grid-cols-[minmax(0,380px)_1fr] lg:gap-16">
@@ -34,12 +40,12 @@ export function FAQ() {
             Frequently Asked Questions
           </h2>
           <p className="mt-4 max-w-xs text-[15px] leading-relaxed text-body">
-            Discover how our design subscription helps innovative brands grow smarter and faster.
+            {description}
           </p>
         </Reveal>
 
         <div className="flex flex-col gap-3">
-          {FAQS.map((item, i) => (
+          {items.map((item, i) => (
             <Reveal key={i} delay={i * 80}>
               <FaqRow item={item} defaultOpen={i === 0} />
             </Reveal>

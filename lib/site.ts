@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 /**
  * Central site / SEO configuration. Update `url` to the production domain once
  * deployed — every canonical, sitemap, robots and JSON-LD URL derives from it.
@@ -26,6 +28,29 @@ export const siteConfig = {
     "BlitzDeep",
   ],
 } as const;
+
+/** Page metadata shared by every service page. */
+export function serviceMetadata(service: {
+  slug: string;
+  title: string;
+  overview: string;
+  tagline: string;
+  tags: string[];
+}): Metadata {
+  const path = `/services/${service.slug}`;
+  return {
+    title: service.title,
+    description: service.overview,
+    keywords: [service.title, ...service.tags, "BlitzDeep"],
+    alternates: { canonical: path },
+    openGraph: {
+      type: "website",
+      title: `${service.title} — BlitzDeep`,
+      description: service.tagline,
+      url: path,
+    },
+  };
+}
 
 /** Turn a path into an absolute URL against the site origin. */
 export function absoluteUrl(path = "/"): string {

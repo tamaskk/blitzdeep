@@ -119,7 +119,7 @@ function Story() {
 function ValueCard({ item }: { item: Value }) {
   const Icon = VALUE_ICONS[item.icon];
   return (
-    <div className="group flex h-full flex-col rounded-3xl border border-line bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/30 hover:shadow-card-hover">
+    <div className="group flex h-full flex-col rounded-3xl border border-line bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/30 hover:shadow-card-hover">
       <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-brand-50 text-brand transition-all duration-300 group-hover:scale-110 group-hover:bg-brand group-hover:text-white">
         <Icon size={20} strokeWidth={1.75} />
       </span>
@@ -183,7 +183,7 @@ function Founder() {
         </Reveal>
 
         <Reveal delay={120} className="mt-12">
-          <div className="grid items-center gap-8 rounded-4xl border border-line bg-white p-6 shadow-card sm:p-8 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-12">
+          <div className="grid items-center gap-8 rounded-4xl border border-line bg-card p-6 shadow-card sm:p-8 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-12">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl">
               <Image
                 src={FOUNDER.photo}

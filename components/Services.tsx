@@ -26,7 +26,7 @@ function ServiceCard({ service }: { service: Service }) {
     <Link
       href={`/services/${service.slug}`}
       aria-label={`${service.title} — learn more`}
-      className="group flex h-full flex-col rounded-3xl border border-line bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/30 hover:shadow-card-hover"
+      className="group flex h-full flex-col rounded-3xl border border-line bg-card p-5 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/30 hover:shadow-card-hover"
     >
       <div className="flex items-start justify-between">
         <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-surface-muted text-brand transition-all duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:border-brand group-hover:bg-brand group-hover:text-white">

@@ -23,7 +23,7 @@ const ICONS: Record<Benefit["icon"], LucideIcon> = {
 function BenefitCard({ item }: { item: Benefit }) {
   const Icon = ICONS[item.icon];
   return (
-    <div className="group flex h-full gap-4 rounded-3xl border border-line bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-card-hover">
+    <div className="group flex h-full gap-4 rounded-3xl border border-line bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-card-hover">
       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-line bg-brand-50 text-brand transition-all duration-300 group-hover:scale-110 group-hover:bg-brand group-hover:text-white">
         <Icon size={20} strokeWidth={1.75} />
       </span>

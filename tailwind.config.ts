@@ -3,7 +3,8 @@ import type { Config } from "tailwindcss";
 /**
  * Design tokens reverse-engineered from the BlitzDeep reference screenshot.
  * Spacing/radius/shadow values are kept in one place so the whole UI can be
- * re-themed from here.
+ * re-themed from here. The neutral colours resolve to CSS variables (set in
+ * globals.css) so a `.theme-dark` wrapper can flip a whole page to dark.
  */
 const config: Config = {
   content: [
@@ -19,25 +20,27 @@ const config: Config = {
           DEFAULT: "#F1592A",
           hover: "#DC4A1E",
           light: "#FF7A4D",
-          50: "#FFF3EC",
-          100: "#FFE3D5",
+          50: "rgb(var(--c-brand-50) / <alpha-value>)",
+          100: "rgb(var(--c-brand-100) / <alpha-value>)",
         },
         // Near-black used for dark cards, the contact form and footer
         ink: {
-          DEFAULT: "#171513",
-          800: "#211E1B",
-          700: "#2C2825",
+          DEFAULT: "rgb(var(--c-ink) / <alpha-value>)",
+          800: "rgb(var(--c-ink-800) / <alpha-value>)",
+          700: "rgb(var(--c-ink-700) / <alpha-value>)",
           muted: "#9A938C",
         },
         // Neutral surface / border ramp
         surface: {
-          DEFAULT: "#FFFFFF",
-          muted: "#F7F6F4",
-          subtle: "#FAF9F7",
+          DEFAULT: "rgb(var(--c-surface) / <alpha-value>)",
+          muted: "rgb(var(--c-surface-muted) / <alpha-value>)",
+          subtle: "rgb(var(--c-surface-subtle) / <alpha-value>)",
         },
-        line: "#E9E6E1",
-        body: "#6B6661",
-        heading: "#1A1714",
+        // Card / raised-surface fill (white in the light theme)
+        card: "rgb(var(--c-card) / <alpha-value>)",
+        line: "rgb(var(--c-line) / <alpha-value>)",
+        body: "rgb(var(--c-body) / <alpha-value>)",
+        heading: "rgb(var(--c-heading) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],

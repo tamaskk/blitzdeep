@@ -72,7 +72,7 @@ function ContactCard({
   return (
     <a
       href={href}
-      className="group relative flex-1 rounded-2xl border border-line bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 focus-visible:ring-offset-2"
+      className="group relative flex-1 rounded-2xl border border-line bg-card p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 focus-visible:ring-offset-2"
     >
       <span className="absolute right-4 top-4 flex gap-1">
         <span className="h-1.5 w-1.5 rounded-full bg-brand" />

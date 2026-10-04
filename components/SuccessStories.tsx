@@ -8,7 +8,7 @@ import { TESTIMONIALS, avatarUrl, type Testimonial } from "@/lib/content";
 
 function TestimonialCard({ item }: { item: Testimonial }) {
   return (
-    <article className="flex h-full flex-col gap-3 rounded-2xl border border-line bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-card-hover">
+    <article className="flex h-full flex-col gap-3 rounded-2xl border border-line bg-card p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-card-hover">
       <div className="flex items-center gap-2">
         <Stars size={14} />
         <span className="text-xs font-medium text-body">{item.rating.toFixed(1)}</span>

@@ -143,7 +143,7 @@ export function MobileMenu() {
         aria-label="Open menu"
         aria-expanded={open}
         aria-controls="mobile-menu"
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white/70 text-heading transition-colors hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 focus-visible:ring-offset-2"
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-card/70 text-heading transition-colors hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 focus-visible:ring-offset-2"
       >
         <Menu size={20} aria-hidden />
       </button>
