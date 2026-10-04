@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HeroVideo } from "@/components/HeroVideo";
 import { PARTNERS } from "@/lib/content";
 
 const HERO_VIDEO =
@@ -11,7 +12,7 @@ const HEADING: Array<Array<{ text: string; accent?: boolean }>> = [
 ];
 
 // Entrance timeline (seconds). Everything cascades in over roughly 4s; the
-// nav (Header) leads at 0, the video fades up underneath throughout.
+// nav (Header) leads at 0; the video fades up underneath once it has loaded.
 const T = { heading: 0.5, word: 0.15, sub: 1.9, cta: 2.3, proof: 2.8, logos: 3.1, logo: 0.12 };
 
 // A few faint stars across the top half: [left %, top %, size px].
@@ -45,20 +46,7 @@ export function Hero() {
       id="home"
       className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-[#0a0f14]"
     >
-      {/* Background video. `mix-blend-screen` drops its black background so
-          only the bright waves show against the page colour. */}
-      <video
-        aria-hidden
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        style={delay(0)}
-        className="absolute inset-0 -z-10 h-full w-full animate-fade-in object-cover mix-blend-screen [animation-duration:2.5s]"
-      >
-        <source src={HERO_VIDEO} type="video/mp4" />
-      </video>
+      <HeroVideo src={HERO_VIDEO} />
 
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         {/* Ambient glows */}

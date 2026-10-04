@@ -63,21 +63,24 @@ const config: Config = {
       maxWidth: {
         container: "1216px",
       },
+      // Entrance animations start at 0.01 opacity, not 0: browsers skip fully
+      // transparent content when picking the Largest Contentful Paint element,
+      // which left pages that fade everything in with no LCP at all.
       keyframes: {
         "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(24px)" },
+          "0%": { opacity: "0.01", transform: "translateY(24px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         "fade-down": {
-          "0%": { opacity: "0", transform: "translateY(-16px)" },
+          "0%": { opacity: "0.01", transform: "translateY(-16px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         "fade-in": {
-          "0%": { opacity: "0" },
+          "0%": { opacity: "0.01" },
           "100%": { opacity: "1" },
         },
         "scale-in": {
-          "0%": { opacity: "0", transform: "scale(0.96)" },
+          "0%": { opacity: "0.01", transform: "scale(0.96)" },
           "100%": { opacity: "1", transform: "scale(1)" },
         },
         float: {
