@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Reveal } from "@/components/ui/Reveal";
+import { CookieSettingsButton } from "@/components/CookieConsent";
 import { FOOTER_COLUMNS } from "@/lib/content";
 
 const SOCIALS = [
@@ -80,6 +81,7 @@ export function Footer() {
                 {item}
               </Link>
             ))}
+            <CookieSettingsButton className="transition-colors hover:text-white" />
           </div>
 
           <div className="flex items-center gap-3">

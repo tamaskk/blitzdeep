@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "@/components/JsonLd";
+import { CookieConsent } from "@/components/CookieConsent";
 import { siteConfig, organizationSchema, websiteSchema } from "@/lib/site";
 
 const inter = Inter({
@@ -94,6 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         {children}
+        <CookieConsent />
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
       </body>
