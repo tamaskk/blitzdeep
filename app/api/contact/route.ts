@@ -127,7 +127,7 @@ function confirmation(input: { firstName: string; message: string }) {
               <table role="presentation" cellpadding="0" cellspacing="0">
                 <tr>
                   <td style="border-radius:999px;background:#F1592A;">
-                    <a href="${siteConfig.url}/#reference" style="display:inline-block;padding:13px 26px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:999px;">See Our Work</a>
+                    <a href="${siteConfig.url}/#testimonials" style="display:inline-block;padding:13px 26px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:999px;">See Client Results</a>
                   </td>
                 </tr>
               </table>

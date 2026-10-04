@@ -91,10 +91,6 @@ const config: Config = {
           "0%, 100%": { transform: "translate(0, 0)" },
           "50%": { transform: "translate(0, 26px)" },
         },
-        marquee: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
         shimmer: {
           "100%": { transform: "translateX(100%)" },
         },
@@ -106,7 +102,6 @@ const config: Config = {
         "scale-in": "scale-in 0.6s ease-out both",
         float: "float 7s ease-in-out infinite",
         "float-slow": "float-slow 9s ease-in-out infinite",
-        marquee: "marquee 30s linear infinite",
         shimmer: "shimmer 2.5s ease-in-out infinite",
       },
     },

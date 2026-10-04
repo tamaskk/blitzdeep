@@ -202,16 +202,4 @@ html:has(.social-page)::-webkit-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-
-  /* Fade the left/right edges of the infinite partner marquee */
-  .marquee-mask {
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      #000 12%,
-      #000 88%,
-      transparent
-    );
-    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-  }
 }

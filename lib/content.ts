@@ -493,38 +493,7 @@ export const STATS = [
   { value: "5+", label: "Years Experience" },
 ];
 
-/* ---------- Reference / Featured Work ---------- */
-
-export type Work = {
-  title: string;
-  subtitle: string;
-  image: string;
-  featured?: boolean;
-};
-
-export const WORKS: Work[] = [
-  {
-    title: "Annex Website",
-    subtitle: "Website Development",
-    image: "photo-1460925895917-afdab827c52f",
-    featured: true,
-  },
-  {
-    title: "Fintech Dashboard",
-    subtitle: "Web & AI Automation",
-    image: "photo-1556761175-5973dc0f32e7",
-  },
-  {
-    title: "Lumen Social",
-    subtitle: "Social Media Campaign",
-    image: "photo-1563986768609-322da13575f3",
-  },
-  {
-    title: "Northwind Studio",
-    subtitle: "Website & SEO",
-    image: "photo-1521737604893-d14cc237f11d",
-  },
-];
+/* ---------- Partners ---------- */
 
 export const PARTNERS = ["Wingman", "Flinkit", "Spinvincible", "Melodia", "ArtistLista"];
 
@@ -702,7 +671,6 @@ export const FOOTER_COLUMNS = [
     links: [
       { label: "Home", href: "/" },
       { label: "About Us", href: "/about" },
-      { label: "Reference", href: "/#reference" },
       { label: "Testimonials", href: "/#testimonials" },
     ],
   },
