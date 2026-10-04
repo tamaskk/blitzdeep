@@ -526,7 +526,7 @@ export const WORKS: Work[] = [
   },
 ];
 
-export const PARTNERS = ["Boltshift", "FeatherDev", "Spherule", "GlobalBank", "Nietzsche"];
+export const PARTNERS = ["Wingman", "Flinkit", "Spinvincible", "Melodia", "ArtistLista"];
 
 /* ---------- Testimonials ---------- */
 
@@ -545,7 +545,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "BlitzDeep rebuilt our website and demo requests doubled in the first month. The team is fast, sharp and genuinely invested in our numbers.",
     name: "Bella Daniela",
     role: "Head of Growth",
-    company: "Heroes Digital",
+    company: "Wingman",
     avatar: PEOPLE[0],
     rating: 5,
   },
@@ -554,7 +554,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "Their AI automation took 15 hours of manual work off my team every single week. It paid for itself within a month.",
     name: "Robbi Darwis",
     role: "Operations Lead",
-    company: "TimeForge",
+    company: "Flinkit",
     avatar: PEOPLE[1],
     rating: 5,
   },
@@ -563,7 +563,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "Our social pipeline has never been healthier. Qualified leads from LinkedIn are up 3x since we started working together.",
     name: "Marcus Lee",
     role: "CMO",
-    company: "Northwind",
+    company: "Spinvincible",
     avatar: PEOPLE[3],
     rating: 4.9,
   },
@@ -572,7 +572,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "Working with BlitzDeep feels like having a senior in-house team. Clear communication, zero fluff and real, repeatable results.",
     name: "Sofia Almeida",
     role: "Founder",
-    company: "Lumen Studio",
+    company: "Melodia",
     avatar: PEOPLE[4],
     rating: 5,
   },
@@ -581,18 +581,9 @@ export const TESTIMONIALS: Testimonial[] = [
       "The new site is gorgeous and blazing fast. Our bounce rate dropped and conversions climbed within the first few weeks.",
     name: "David Chen",
     role: "VP Marketing",
-    company: "GlobalBank",
+    company: "ArtistLista",
     avatar: PEOPLE[5],
     rating: 5,
-  },
-  {
-    quote:
-      "From strategy to launch, every milestone landed on time. These are the people you want building your growth engine.",
-    name: "Hannah Weber",
-    role: "CEO",
-    company: "Spherule",
-    avatar: PEOPLE[6],
-    rating: 4.9,
   },
 ];
 
